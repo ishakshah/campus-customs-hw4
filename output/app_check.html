@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>App Check</title>
+<style>
+  :root {
+    --navy: #00356B;
+    --navy-dark: #00244A;
+    --gold: #F2B705;
+    --ink: #1b2430;
+    --line: #e1e6ee;
+    --soft: #f4f6fa;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0 24px 72px;
+    color: var(--ink);
+    background: #fff;
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  /* A navy bar with a gold line, like the site's top bar */
+  body::before {
+    content: "";
+    display: block;
+    height: 18px;
+    margin: 0 -24px 40px;
+    background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+    border-bottom: 4px solid var(--gold);
+  }
+  body > * { max-width: 1320px; margin-left: auto; margin-right: auto; }
+
+  /* Problem title at the top: big serif with the gold highlighter stripe */
+  h1 {
+    font-family: "Iowan Old Style", Palatino, Georgia, serif;
+    font-size: 2.4rem;
+    line-height: 1.15;
+    color: var(--navy);
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+  h1 span {
+    background: linear-gradient(transparent 62%, rgba(242, 183, 5, .45) 62%);
+    padding: 0 4px;
+  }
+
+  /* Each test heading: serif, navy, with a gold underline */
+  h2 {
+    font-family: "Iowan Old Style", Palatino, Georgia, serif;
+    font-size: 1.6rem;
+    line-height: 1.25;
+    color: var(--navy);
+    margin-top: 52px;
+    margin-bottom: 18px;
+    padding-bottom: 6px;
+    border-bottom: 3px solid var(--gold);
+  }
+  h2 .num {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy-dark);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: .9rem;
+    font-weight: 700;
+    border-radius: 999px;
+    padding: 1px 12px;
+    margin-right: 10px;
+    vertical-align: .12em;
+  }
+
+  /* Description on the left, screenshot on the right */
+  .row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: 32px;
+    align-items: start;
+  }
+  .text p { margin-top: 0; margin-bottom: 14px; }
+
+  /* The explanation reads like a card with a gold edge */
+  .text p:first-child {
+    background: var(--soft);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 18px;
+  }
+
+  /* The image link, styled like the site's pill labels */
+  .text a {
+    display: inline-block;
+    background: var(--navy);
+    color: #fff;
+    font-size: .85rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 999px;
+    padding: 3px 14px;
+    overflow-wrap: anywhere;
+  }
+  .text a:hover { background: var(--navy-dark); box-shadow: 0 2px 0 var(--gold); }
+  .text a:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+  /* Screenshots sit on a rounded white card */
+  .row img {
+    display: block;
+    max-width: 100%;
+    max-height: 760px;
+    width: auto;
+    height: auto;
+    justify-self: start;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0, 36, 74, .12);
+  }
+
+  /* Test #1's screenshot is a tall chat panel, so it stays at its smaller size */
+  .row img[src$="assistant_inventory.png"] { max-height: 560px; justify-self: center; }
+
+  @media (max-width: 760px) {
+    .row { grid-template-columns: 1fr; }
+    h1 { font-size: 1.9rem; }
+    h2 { font-size: 1.35rem; }
+  }
+</style>
+</head>
+<body>
+
+<h1><span>Problem 11: Site testing (app check)</span></h1>
+
+<h2><span class="num">Test #1</span>Chat checking the inventory level of an item to ensure honest stock and price from the database</h2>
+
+<div class="row">
+  <div class="text">
+    <p>
+      The screenshot shows the Personal Assistant answering a question about Basic Hoodie Big Yale in size M with an exact stock number (5) and a "low stock" label, which are the values stored in the inventory table rather than a guess.
+      Because the answer is a specific number from the database instead of a vague or invented reply, it shows the assistant is looking up stock honestly.
+    </p>
+    <p><a href="app_check_images/assistant_inventory.png">app_check_images/assistant_inventory.png</a></p>
+  </div>
+  <img src="app_check_images/assistant_inventory.png" alt="Personal Assistant chat answering that Basic Hoodie Big Yale in size M has 5 in stock, marked low stock">
+</div>
+
+<h2><span class="num">Test #2</span>The dynamic search-result cards appearing after a category question</h2>
+
+<div class="row">
+  <div class="text">
+    <p>
+      The screenshot shows the Products page right after I asked the Personal Assistant about hoodies in a small: the page now shows only hoodie product cards (23 of 27 products) under a banner saying the results were found by the Personal Assistant.
+      The assistant's reply in the chat panel says those hoodies are showing on the page, which shows the cards appeared because of the chat question, and the assistant also applied the Size S filter by itself, which the banner and the highlighted S button confirm.
+    </p>
+    <p><a href="app_check_images/assistant_size_filter.png">app_check_images/assistant_size_filter.png</a></p>
+  </div>
+  <img src="app_check_images/assistant_size_filter.png" alt="Products page showing hoodie cards found by the Personal Assistant, with the Size S filter on and the chat panel open">
+</div>
+
+<h2><span class="num">Test #3</span>Adding filters and sort by functions to the Products page</h2>
+
+<div class="row">
+  <div class="text">
+    <p>
+      The screenshot shows that I applied the Jackets item type filter, which narrowed the grid from 102 products to the 8 jackets, and then sorted the results with the "Sort by" menu set to "Alphabetical: A to Z".
+      The cards run Benjamin Franklin, Berkeley, then Brooks Brothers, which shows the filter changes what the page shows and the sort puts those results in order.
+    </p>
+    <p><a href="app_check_images/products_filters.png">app_check_images/products_filters.png</a></p>
+  </div>
+  <img src="app_check_images/products_filters.png" alt="Products page with the Jackets filter on, showing 8 of 102 products sorted alphabetically A to Z">
+</div>
+
+</body>
+</html>

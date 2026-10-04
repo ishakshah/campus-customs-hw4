@@ -1,0 +1,7 @@
+fastapi==0.142.2
+uvicorn==0.54.0
+pillow==12.3.0
+argon2-cffi==25.1.0
+python-dotenv==1.2.4
+pydantic-ai-slim[openai]==2.54.0
+openai==3.24.0
