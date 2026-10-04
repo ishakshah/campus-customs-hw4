@@ -499,3 +499,13 @@ and is there anything extra on the folder that shouldn't be there?
 ### Prompt 111
 
 okay, walk me through how to submit this assignment now
+
+### Prompt 112
+
+on step 5: zsh: command not found: gh is what im seeing
+
+### Prompt 113
+
+isha@Ishas-MacBook-Air AI Class % gh repo create campus-customs-hw4 --public --source=. --remote=origin --push
+current directory is not a git repository. Run `git init` to initialize it
+isha@Ishas-MacBook-Air AI Class %
