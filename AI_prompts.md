@@ -525,3 +525,7 @@ what's the link to the website?
 ### Prompt 117
 
 great, what's the terminal code to push just the changes to github?
+
+### Prompt 118
+
+did it work?
