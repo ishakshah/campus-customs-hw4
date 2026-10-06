@@ -198,7 +198,7 @@ Two choices on purpose: products sold out in the requested size still show up, m
 
 ### `show_on_page`
 
-Used when a shopper asks to browse a kind of item, like "navy hoodies in medium under $60". The agent sends in a short `title` (at most 40 characters), `query` keywords for the kind of item (sizes, colors, and prices go in filters, so the shopper can see and change them), and the filters `categories`, `sizes`, `colors`, `min_price`, `max_price`, and `sort` (only when they asked for an order). These mirror the filter panel. It returns a `PageShowing`:
+Used when a shopper asks to browse a kind of item, like "navy hoodies in medium under $60". The agent sends in a short `title` (at most 40 characters), `query` keywords for the kind of item (sizes, colors, and prices go in filters, so the shopper can see and change them), and the filters `categories`, `sizes`, `colors`, `min_price`, `max_price`, and `sort` (only when they asked for an order). These mirror the filter panel, and `colors` matches each product's one primary color. It returns a `PageShowing`:
 
 | Field | Why I chose it |
 |---|---|
@@ -258,7 +258,7 @@ The tool-result models (`ProductResult`, `SearchResponse`, `PageShowing`, `Produ
 
 | Model | Fields and why I chose them |
 |---|---|
-| `Product` | `product_id`, `name`, `garment_type`, `description`, `colors`, `price` come straight from the catalogue, because facts come from the database and nowhere else. `image_url` is a web address (`/images/...`), so the browser never sees file paths. `category` groups the 22 messy garment types for the Item type filter, `color_families` groups colors for the Color filter, and `available_sizes` lists only sizes in stock, so the Size filter never offers one that's gone. The last three have defaults. |
+| `Product` | `product_id`, `name`, `garment_type`, `description`, `colors`, `price` come straight from the catalogue, because facts come from the database and nowhere else. `image_url` is a web address (`/images/...`), so the browser never sees file paths. `category` groups the 22 messy garment types for the Item type filter, `primary_color` is the one color family the Color filter uses (the garment's main color, so a navy hoodie with white lettering is Navy and never White, while `colors` still lists every color), and `available_sizes` lists only sizes in stock, so the Size filter never offers one that's gone. The last three have defaults. |
 | `SizeStock` | `size`, `quantity`: one row of `inventory`. |
 | `ProductDetail` | A `Product` plus a list of `SizeStock`, which the single-item page needs. |
 | `ProductCard` | `product_id` (makes the card clickable), `name`, `price`, `image_url` (the photo, name, and price I wanted on a card), and `short_info`, one line like "Short-sleeve T-shirt · heather gray, white". The server builds it in code, so the model can't get it wrong. |

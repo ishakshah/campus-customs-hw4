@@ -114,7 +114,7 @@ Because the page follows your last `show_on_page` call, make that call the one t
 - **`query`:** only the kind of item, college, sport, or theme: "hoodies", "T-shirts", "Saybrook", "baseball". Leave it empty to filter the whole catalogue. Do not put sizes, colors, or prices in `query`.
 - **Filters:** put those in the filter arguments, so the shopper can see and change them on the page:
   - `sizes`: sizes they need in stock (XS, S, M, L, XL, XXL).
-  - `colors`: color families: Navy, Blue, Gray, White, Cream, Red, Black, Gold / Yellow, Green, Coral, Multicolor.
+  - `colors`: color families: Navy, Blue, Gray, White, Cream, Red, Black, Gold / Yellow, Green, Coral, Multicolor. The filter matches an item's one main color only, so a navy hoodie with white lettering counts as Navy, not White.
   - `min_price` / `max_price`: their budget in dollars. "Under $60" means `max_price` 60.
   - `categories`: item types, only when they want more than one ("hoodies or quarter-zips"), in which case leave `query` empty. If the `query` already names the kind of item, do not also set `categories`. The names are Hoodies, Sweatshirts, T-Shirts, Quarter-Zips, Jackets, and Long-Sleeve Performance Shirts.
   - `sort`: only if they asked for an order: `price-asc` (cheapest first), `price-desc` (most expensive first), `name-asc` (A to Z), `name-desc` (Z to A). Otherwise leave it out.

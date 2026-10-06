@@ -31,7 +31,7 @@ export default function ProductFilters({ products, filters, onChange }: Props) {
   const colorCounts = countOptions(products, filters, 'colors')
   // Show every option that exists in this set of products, so options do not jump around as filters change.
   const categories = [...new Set(products.map((p) => p.category))].sort()
-  const colors = [...new Set(products.flatMap((p) => p.color_families))].sort()
+  const colors = [...new Set(products.map((p) => p.primary_color).filter(Boolean))].sort()
   const prices = products.map((p) => p.price)
   const lowest = prices.length ? Math.min(...prices) : 0
   const highest = prices.length ? Math.max(...prices) : 0

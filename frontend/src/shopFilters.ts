@@ -41,8 +41,8 @@ export function matchesFilters(p: Product, f: Filters, skip?: Facet): boolean {
   if (skip !== 'categories' && f.categories.length > 0 && !f.categories.includes(p.category)) return false
   // Sizes: in stock in at least one of the chosen sizes.
   if (skip !== 'sizes' && f.sizes.length > 0 && !f.sizes.some((s) => p.available_sizes.includes(s))) return false
-  // Colors: has at least one of the chosen color families.
-  if (skip !== 'colors' && f.colors.length > 0 && !f.colors.some((c) => p.color_families.includes(c))) return false
+  // Colors: the product's one primary color is one of the chosen colors (its accent colors do not count).
+  if (skip !== 'colors' && f.colors.length > 0 && !f.colors.includes(p.primary_color)) return false
   if (skip !== 'price') {
     const min = parsePrice(f.minPrice)
     const max = parsePrice(f.maxPrice)
@@ -59,7 +59,7 @@ export function countOptions(products: Product[], f: Filters, facet: Exclude<Fac
   const counts = new Map<string, number>()
   for (const p of products) {
     if (!matchesFilters(p, f, facet)) continue
-    const values = facet === 'categories' ? [p.category] : facet === 'sizes' ? p.available_sizes : p.color_families
+    const values = facet === 'categories' ? [p.category] : facet === 'sizes' ? p.available_sizes : [p.primary_color]
     for (const v of values) counts.set(v, (counts.get(v) ?? 0) + 1)
   }
   return counts

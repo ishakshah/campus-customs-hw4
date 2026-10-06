@@ -7,7 +7,7 @@ export interface Product {
   price: number
   image_url: string
   category: string
-  color_families: string[]
+  primary_color: string
   available_sizes: string[]
 }
 

@@ -509,3 +509,19 @@ on step 5: zsh: command not found: gh is what im seeing
 isha@Ishas-MacBook-Air AI Class % gh repo create campus-customs-hw4 --public --source=. --remote=origin --push
 current directory is not a git repository. Run `git init` to initialize it
 isha@Ishas-MacBook-Air AI Class %
+
+### Prompt 114
+
+✓ Pushed commits to https://github.com/ishakshah/campus-customs-hw4.git
+
+### Prompt 115
+
+one more thing i want to fix - the colors filter doesn't seem to be working properly. can you make sure, for each product, you arae identifying one primary color per product only when filters are being applied on the products page?
+
+### Prompt 116
+
+what's the link to the website?
+
+### Prompt 117
+
+great, what's the terminal code to push just the changes to github?

@@ -18,7 +18,10 @@ class Product(BaseModel):
     image_url: str
     # Used by the Products page filters.
     category: str = Field(default="", description="Item type, e.g. Hoodies or Quarter-Zips.")
-    color_families: list[str] = Field(default_factory=list, description="The colors grouped into a few families, e.g. Navy, Gray.")
+    primary_color: str = Field(
+        default="",
+        description="The one color family the Color filter uses for this item, e.g. Navy. `colors` still lists every color.",
+    )
     available_sizes: list[str] = Field(default_factory=list, description="Sizes currently in stock, XS to XXL.")
 
 

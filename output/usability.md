@@ -38,7 +38,7 @@ The Products page has 102 items, so I added a filter panel and a sort menu:
 
 - **Item type:** Hoodies, Sweatshirts, T-Shirts, Quarter-Zips, Jackets, and Long-Sleeve Performance Shirts.
 - **Size:** XS to XXL. This only shows items that are actually in stock in the size you pick.
-- **Color:** 11 color families, each with a small color swatch (Navy, Gray, White, Red, and so on). The catalogue has 22 different color names, so I grouped them to keep the list short.
+- **Color:** each item counts as one main color, so a navy hoodie with white lettering shows up under Navy and not under White. The catalogue has 22 different color names, so I grouped them into a few families with a small color swatch each (Navy, Gray, Cream, White, and Coral are the main colors the shop has right now). The item's other colors are still listed on its page.
 - **Price:** a minimum and a maximum box.
 - **Counts and clearing:** every option shows how many products it would give you, with your other filters taken into account. A **Clear all** button resets everything, and if nothing matches, the page says so and offers a way back.
 - **Sorting:** relevance, price, and alphabetical, each in both directions (most to least, least to most; high to low, low to high; A to Z, Z to A).

@@ -99,8 +99,9 @@ def display_name(name: str) -> str:
     return name
 
 
-# The catalogue lists 22 color names ("navy blue", "heather gray", "dusty coral", ...). For filtering they are
-# grouped into a few families. The first rule that matches wins, so "light blue" is Blue and "navy blue" is Navy.
+# The catalogue lists 22 color names ("navy blue", "heather gray", "dusty coral", ...). They are grouped into a few
+# families. The first rule that matches wins, so "light blue" is Blue and "navy blue" is Navy. The Color filter
+# uses one family per product, its primary color (see primary_color below).
 COLOR_FAMILIES = (
     ("Navy", ("navy",)),
     ("Blue", ("blue",)),
@@ -126,6 +127,26 @@ def color_families(colors: list[str]) -> list[str]:
     return [family for family, _ in COLOR_FAMILIES if family in found]
 
 
+def primary_color(colors: list[str], description: str = "") -> str:
+    """The one color family the Color filter uses for a product: the garment's main color.
+
+    The catalogue lists a product's main color first ("navy blue", then the white lettering and so on), and in every
+    product that has colors this matches the first color named in its description. A product with no colors listed
+    uses the first color its description names. If neither names a color there is no primary color ("").
+    """
+    families = color_families(colors[:1])
+    if families:
+        return families[0]
+    text = description.lower()
+    hits = [
+        (match.start(), family)
+        for family, keywords in COLOR_FAMILIES
+        for word in keywords
+        if (match := re.search(rf"\b{word}\b", text))
+    ]
+    return min(hits)[1] if hits else ""
+
+
 def to_product(row: sqlite3.Row, available_sizes: list[str] | None = None) -> Product:
     # image_file_path is stored relative to data/ (e.g. "products/<id>.jpg").
     description = DESCRIPTION_OVERRIDES.get(row["product_id"], row["description"])
@@ -141,7 +162,7 @@ def to_product(row: sqlite3.Row, available_sizes: list[str] | None = None) -> Pr
         price=row["price"],
         image_url=f"/images/{Path(row['image_file_path']).name}?v={IMAGE_VERSION}",
         category=category_of(row["garment_type"]),
-        color_families=color_families(colors),
+        primary_color=primary_color(colors, description),
         available_sizes=available_sizes or [],
     )
 
@@ -416,7 +437,7 @@ def matches_page_filters(product: Product, available_sizes: list[str], filters: 
         return False
     if filters.sizes and not any(size in available_sizes for size in filters.sizes):
         return False
-    if filters.colors and not any(color in product.color_families for color in filters.colors):
+    if filters.colors and product.primary_color not in filters.colors:
         return False
     if filters.min_price is not None and product.price < filters.min_price:
         return False
