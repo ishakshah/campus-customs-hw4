@@ -30,6 +30,10 @@ So today we're building a customer website with a chatbot for Campus Customes. T
 
 yes, it's gpt-6-astra. Oh and for site colors, look at https://yalebulldogblue.com/ to understand the aesthetic I want, I don't want the Justin Bieber look that's the default currently. I want it to look clean, modern, and professional. like the yale website
 
+
+
+
+
 ## Problem 2: Analyze the database
 
 ### Prompt 7
@@ -39,6 +43,10 @@ Let's move onto Problem 2: Analyze the databse. Look at @hw4/data/campus_customs
 ### Prompt 8
 
 Now, start the file output/harness.md. In here, can you put each of the 4 tables and its fields. For each field, include one short line (5-15 words) on why each field is relevant for a campus apparel shop
+
+
+
+
 
 ## Problem 3: Build the Campus Customs website
 
@@ -64,6 +72,7 @@ Can you confirm content.ts updated with my edits and I didn't mess anything up?
 ### Prompt 13
 
 check one more time
+*just to confirm the model is updating with my edits*
 
 ### Prompt 14
 
@@ -72,6 +81,7 @@ Next step, on the Products page, pull product images from the catalogue by using
 ### Prompt 15
 
 why does python3.13 need access to my Desktop folder?
+*just want to confirm if access to my Desktop files is TRULY needed*
 
 ### Prompt 16
 
@@ -125,6 +135,10 @@ Okay, are we all good with problem 4?
 
 i mean problem 3
 
+
+
+
+
 ## Problem 4: Create account and login
 
 ### Prompt 28
@@ -151,6 +165,10 @@ It works now! I also just created an account, can you check it was done correctl
 
 Great! Now add onto output/harness.md with how authorization works. Include what we store for a user and how passwords are protected.
 
+
+
+
+
 ## Problem 5: PydanticAI agent backend
 
 ### Prompt 34
@@ -173,6 +191,10 @@ i got this error zsh: command not found: uvicorn
 
 sweet! now in @hw4/output/harness.md can you make a note of how the front end talks to FastAPI and how the agent is loaded (including prompt file and model). write it so it sounds like me
 
+
+
+
+
 ## Problem 6: Tools: product info and stock
 
 ### Prompt 39
@@ -191,6 +213,10 @@ yeah, lets add it. and yes, add those tools
 
 In @hw4/output/harness.md , write it as my decision. and what I meant is include the 4 tools you mentioned earlier.
 
+*since the AI model asked which tools I wanted to newly added, I clarified that I meant the 4 tools mentioned earlier*
+
+
+
 ## Problem 7: Chat search that updates the page
 
 ### Prompt 43
@@ -200,6 +226,10 @@ Now onto Problem 7: Chat search that updates the page. When a customer asks abou
 ### Prompt 44
 
 can you update @hw4/backend/prompts/prompt.md and @hw4/output/harness.md to show how search results reach the page for the feature we just added?
+
+
+
+
 
 ## Problem 8: Customer memory
 
@@ -214,6 +244,10 @@ can you document in @hw4/output/harness.md how chat history is stored, what cust
 ### Prompt 47
 
 take out the "what I tested" from harness.md.
+
+*the harness was too lengthy, I'm trying to train the AI to be more concise*
+
+
 
 ## Problem 9: Usability improvements
 
@@ -252,6 +286,7 @@ Let's do #2 - automated backend tests, for my second backend improvement
 ### Prompt 56
 
 I want to stick to the original file layout though. can you make it so backend improvement #2 does not create any new files that don't fit the original file layout?
+*since backend improvement #2 for automated tests resulted in several new files, compromising the assignment's targeted file structure*
 
 ### Prompt 57
 
@@ -260,6 +295,10 @@ yeah, move those into tools.py
 ### Prompt 58
 
 Write output/usability.md. In there, document all 4 usability improvemnts I made. make it sound like me. For each, clarify what I added and how it helps a potential shopper.
+
+
+
+
 
 ## Problem 10: Style the website
 
@@ -291,6 +330,7 @@ make sure to frame bill clinton as a Yale alum. can we also add a picture of him
 [Image attached: screenshot of the chat window with the portrait circle sticking out above the window, face cut off]
 
 Can you make it so his face is actually inside the window, not popping out of the window
+*The UI/UX was not great, Bill's face kept being cut off, so I adjusted my design*
 
 ### Prompt 65
 
@@ -309,6 +349,7 @@ I want all 20 locations in one single slideshow that people can click through. i
 ### Prompt 68
 
 let's just use the photos you have so far and scrap the rest
+*there were copyright/usability restrictions for a few of the photos, which I didn't deem necessary*
 
 ### Prompt 69
 
@@ -321,6 +362,7 @@ No, it's fine. At the bottom, can you give me credit "Isha Shah" for the website
 ### Prompt 71
 
 can you standardize the fonts in the bottom bar?
+*all the font styles were different, not aligned with my intended aesthetic*
 
 ### Prompt 72
 
@@ -337,6 +379,11 @@ Can you include the points under Overall look and feel, Navigation bar, Home pag
 ### Prompt 75
 
 Can you make all of @hw4/output/design.md just 30% shorter?
+*again still training the model to be more concise*
+
+
+
+
 
 ## Problem 11: Site testing (app check)
 
@@ -347,6 +394,7 @@ Onto Problem 11: Site testing (app check). Create output/app_check.html. Make it
 ### Prompt 77
 
 Wait don't pre-populate @hw4/output/app_check.html . I want to put content in myself and then have you format it later.
+*the model tried to run the app check by itself, but I needed to do it manually*
 
 ### Prompt 78
 
@@ -355,6 +403,7 @@ ok, done with the html. can you take the screenshots i've put in @hw4/output/app
 ### Prompt 79
 
 wait what did i just edit? I thought i typed in content in the Files window into @hw4/output/app_check.html . did i put it somewhere else by accident just now?
+*something I typed manually didn't quite save right*
 
 ### Prompt 80
 
@@ -377,6 +426,7 @@ this one too
 ### Prompt 83
 
 can you store all 3 screenshots as the same file type - png?
+*it had stored some as htmls/jpegs and some as png, I wanted to be consistent*
 
 ### Prompt 84
 
@@ -440,6 +490,10 @@ revert the size of the first screenshot, otherwise all good
 
 I do want it centered again.
 
+
+
+
+
 ## Problem 12: Audit trail, safety, and finish harness
 
 ### Prompt 99
@@ -461,6 +515,11 @@ anything you added that i did not particularly ask for but you thought was relev
 ### Prompt 103
 
 let's just make @hw4/output/harness.md about 30% more concise
+*still training the model to be more concise*
+
+
+
+
 
 ## Problem 13: Push to GitHub and submit the URL
 
@@ -491,6 +550,7 @@ lert's keep the entries as proof that the trail works.
 are we ready to push though - check one more time. i didn't see .env.example or .gitignore in the h4 folder
 
 (Attached: the expected file layout screenshot again.)
+*just double checking - i know gitignore won't appear in the folder*
 
 ### Prompt 110
 
@@ -529,3 +589,19 @@ great, what's the terminal code to push just the changes to github?
 ### Prompt 118
 
 did it work?
+
+### Prompt 119
+
+One more thing - I forgot to udpate with Problem 1, I wanted to write notes in AI_prompts.md. can you help me do that before we recommit to Github?
+
+### Prompt 120
+
+I want to type the notes in myself
+
+### Prompt 121
+
+Can you add the empty ### Notes at the end of each problem in @hw4/AI_prompts.md ?
+
+### Prompt 122
+
+Ok, I updated AI_prompts.md. Can you confirm this didn't edit any other files in @hw4 . Then help me recommit to Github
